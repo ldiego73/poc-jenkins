@@ -5,7 +5,11 @@ pipeline {
 
     stages {
         stage('Load Plugins') {
-            mail = load "${env.WORKSPACE}/ci/mail.groovy"
+            steps {
+                script {
+                    mail = load("${env.WORKSPACE}/ci/mail.groovy")
+                } 
+            }
         }
 
         stage('Install Dependencies') {
