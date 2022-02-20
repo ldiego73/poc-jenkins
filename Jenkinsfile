@@ -4,8 +4,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Load Plugins') {
+            steps {
+                mail = load("${env.WORKSPACE}/ci/mail.groovy")
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
+                mail.send('lfdiego7@gmail.com')
                 sh 'echo "Installing dependencies"'
             }
         }
@@ -54,6 +61,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                mail.send('lfdiego7@gmail.com')
                 sh 'echo "Deploying"'
             }
         }

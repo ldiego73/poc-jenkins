@@ -1,3 +1,3 @@
-def mail(String to) {
+def send(String to) {
     return "mail to ${to}";
 }
