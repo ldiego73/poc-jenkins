@@ -16,14 +16,14 @@ def send(String to, String buildStatus) {
         .replace("{{JobName}}", JOB_NAME)
         .replace("{{BuildNumber}}", BUILD_NUMBER)
         .replace("{{BuildUrl}}", BUILD_URL)
-        .replace("{{BuildStatus}}", status)
+        .replace("{{BuildStatus}}", buildStatus)
         .replace("{{BuildStatusColor}}", colorCode)
         .replace("{{GitCommit}}", GIT_COMMIT)
         .replace("{{GitBranch}}", GIT_BRANCH)
         .replace("{{GitUrl}}", GIT_URL)
 
     emailext body: htmlBody,
-        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $status!",
+        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $buildStatus!",
         to: to;
 }
 
