@@ -17,7 +17,7 @@ def send(String to, String buildStatus) {
         .replace("{{ProjectName}}", PROJECT_NAME)
         .replace("{{JobName}}", JOB_NAME)
         .replace("{{BuildNumber}}", BUILD_NUMBER)
-        .replace("{{BuildUrl}}", BUILD_URL)
+        .replace("{{BuildUrl}}", "https://github.com/ldiego73/poc-jenkins")
         .replace("{{BuildStatus}}", buildStatus)
         .replace("{{BuildStatusColor}}", colorCode)
         .replace("{{GitCommit}}", GIT_COMMIT)
