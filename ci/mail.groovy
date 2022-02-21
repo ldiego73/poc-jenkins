@@ -27,8 +27,7 @@ def send(String to, String buildStatus) {
 
     emailext body: htmlBody,
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $buildStatus!",
-        to: to,
-        recipientProviders: ['arquitectura.digital@auna.pe'];
+        to: to;
 }
 
 def approve(String to) {
@@ -43,8 +42,7 @@ def approve(String to) {
     
     emailext body: htmlBody,
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - Approve!",
-        to: to,
-        recipientProviders: ['arquitectura.digital@auna.pe'];
+        to: to;
 }
 
 return this
