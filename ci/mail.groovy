@@ -1,5 +1,7 @@
 def send(String to) {
-    return "mail to ${to}";
+    emailext body: 'Test Message',
+        subject: 'Test Subject',
+        to: to;
 }
 
 return this
