@@ -1,7 +1,7 @@
 def send(String to, String status) {
     def body = sh(script: "cat ci/build.html", returnStdout: true).trim()
 
-    emailext body: body.replaceAll("{{JobName}}", JOB_NAME),
+    emailext body: body.replaceAll('{{JobName}}', JOB_NAME),
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $status!",
         to: to;
 
