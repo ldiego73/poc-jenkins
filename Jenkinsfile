@@ -4,6 +4,7 @@ pipeline {
     agent any
     
     environment {
+        PROJECT_NAME = 'POC Jenkins'
         MAIL_TO = 'ldiego@auna.pe'
     }
 
