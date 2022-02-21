@@ -23,7 +23,7 @@ def send(String to, String buildStatus) {
         .replace("{{GitCommit}}", GIT_COMMIT)
         .replace("{{GitBranch}}", GIT_BRANCH)
         .replace("{{GitUrl}}", GIT_URL)
-        .replace("{{Year}}", today.getYear().toString())
+        .replace("{{Year}}", (today.getYear() + 1900).toString())
 
     emailext body: htmlBody,
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $buildStatus!",
