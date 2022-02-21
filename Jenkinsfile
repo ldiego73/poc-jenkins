@@ -9,8 +9,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
+                    sh "${MAIL_TO}"
                     def mail = load "ci/mail.groovy"
-                    mail.send('hola mundo')
+                    mail.send(MAIL_TO)
 
                     sh 'echo "Installing dependencies"'
                 }
