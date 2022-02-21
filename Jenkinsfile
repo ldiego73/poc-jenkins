@@ -1,5 +1,3 @@
-def mail
-
 pipeline {
     agent any
     
@@ -11,7 +9,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    mail = load "ci/mail.groovy"
+                    def mail = load "ci/mail.groovy"
                     mail.send(MAIL_TO)
 
                     sh 'echo "Installing dependencies"'
@@ -79,7 +77,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    mail = load "ci/mail.groovy"
+                    def mail = load "ci/mail.groovy"
                     mail.send(MAIL_TO)
 
                     sh 'echo "Deploying"'
