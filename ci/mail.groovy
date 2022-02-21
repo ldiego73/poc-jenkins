@@ -11,6 +11,7 @@ def send(String to, String buildStatus) {
         colorCode = "#FF0000"
     }
 
+    def today = new Date()
     def rawBody = sh(script: "cat ci/build.html", returnStdout: true).trim()
     def htmlBody = rawBody
         .replace("{{ProjectName}}", PROJECT_NAME)
@@ -22,6 +23,7 @@ def send(String to, String buildStatus) {
         .replace("{{GitCommit}}", GIT_COMMIT)
         .replace("{{GitBranch}}", GIT_BRANCH)
         .replace("{{GitUrl}}", GIT_URL)
+        .replace("{{Year}}", today.toYear())
 
     echo htmlBody
 
