@@ -44,6 +44,7 @@ def approve(String to) {
         .replace("{{Year}}", (today.getYear() + 1900).toString())
     
     emailext body: htmlBody,
+        from: '1correo.envio@gmail.com',
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - Approve!",
         to: to;
 }
