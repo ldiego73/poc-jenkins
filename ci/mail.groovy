@@ -1,16 +1,30 @@
-def send(String to, String status) {
+def send(String to, String buildStatus) {
+    def colorCode
+
+     if (buildStatus == "Started") {
+        colorCode = "#FFFF00"
+    } else if (buildStatus == "Success") {
+        colorCode = "#00FF00"
+    } else if(buildStatus == "Aborted" || buildStatus == "Stopped" || buildStatus == "Unstable") {
+        colorCode = "#949393"
+    } else {
+        colorCode = "#FF0000"
+    }
+
     def rawBody = sh(script: "cat ci/build.html", returnStdout: true).trim()
-    def htmlBody = rawBody.replace("{{JobName}}", JOB_NAME)
+    def htmlBody = rawBody
+        .replace("{{JobName}}", JOB_NAME)
+        .replace("{{BuildNumber}}", BUILD_NUMBER)
+        .replace("{{BuildUrl}}", BUILD_URL)
+        .replace("{{BuildStatus}}", status)
+        .replace("{{BuildStatusColor}}", colorCode)
+        .replace("{{GitCommit}}", GIT_COMMIT)
+        .replace("{{GitBranch}}", GIT_BRANCH)
+        .replace("{{GitUrl}}", GIT_URL)
 
     emailext body: htmlBody,
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $status!",
         to: to;
-
-    /*
-    emailext body: "BUILD_NUMBER: $BUILD_NUMBER - BUILD_URL: $BUILD_URL - JOB_NAME: $JOB_NAME - GIT_COMMIT: $GIT_COMMIT - GIT_URL: $GIT_URL - GIT_BRANCH: $GIT_BRANCH",
-        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $status!",
-        to: to;
-    */
 }
 
 return this
