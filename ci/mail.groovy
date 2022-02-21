@@ -26,8 +26,11 @@ def send(String to, String buildStatus) {
         .replace("{{Year}}", (today.getYear() + 1900).toString())
 
     emailext body: htmlBody,
+        from: '1correo.envio@gmail.com',
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $buildStatus!",
-        to: to;
+        to: to,
+        attachLog: true,
+        compressLog: true;
 }
 
 def approve(String to) {
