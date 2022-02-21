@@ -30,4 +30,19 @@ def send(String to, String buildStatus) {
         to: to;
 }
 
+def approve(String to) {
+    def today = new Date()
+    def rawBody = sh(script: "cat ci/approve.html", returnStdout: true).trim()
+    def htmlBody = rawBody
+        .replace("{{ProjectName}}", PROJECT_NAME)
+        .replace("{{JobName}}", JOB_NAME)
+        .replace("{{BuildNumber}}", BUILD_NUMBER)
+        .replace("{{BuildUrl}}", BUILD_URL)
+        .replace("{{Year}}", (today.getYear() + 1900).toString())
+    
+    emailext body: htmlBody,
+        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - Approve!",
+        to: to;
+}
+
 return this

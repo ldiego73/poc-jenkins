@@ -81,7 +81,7 @@ pipeline {
             steps {
                 script {
                     mail = load 'ci/mail.groovy'
-                    mail.send(MAIL_TO, 'Success')
+                    mail.approve(MAIL_TO)
 
                     sh 'echo "Deploying"'
                 }
