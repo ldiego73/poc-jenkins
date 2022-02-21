@@ -5,6 +5,7 @@ pipeline {
     
     environment {
         PROJECT_NAME = 'POC Jenkins'
+        BUILD_NUMBER = env.BUILD_NUMBER
         MAIL_TO = 'ldiego@auna.pe'
     }
 
