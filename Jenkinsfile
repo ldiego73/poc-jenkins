@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     def mail = load "ci/mail.groovy"
-                    mail.send(MAIL_TO)
+                    mail.send('hola mundo')
 
                     sh 'echo "Installing dependencies"'
                 }
