@@ -4,7 +4,6 @@ pipeline {
     agent any
     
     environment {
-        WORKSPACE = "${env.WORKSPACE}"
         MAIL_TO = 'lfdiego7@gmail.com'
     }
 
@@ -12,7 +11,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    mail = load("${env.WORKSPACE}/ci/mail.groovy")
+                    mail = load "ci/mail.groovy"
                     mail.send(MAIL_TO)
 
                     sh 'echo "Installing dependencies"'
@@ -80,7 +79,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    mail = load("${env.WORKSPACE}/ci/mail.groovy")
+                    mail = load "ci/mail.groovy"
                     mail.send(MAIL_TO)
 
                     sh 'echo "Deploying"'
