@@ -23,7 +23,7 @@ def send(String to, String buildStatus) {
         .replace("{{GitCommit}}", GIT_COMMIT)
         .replace("{{GitBranch}}", GIT_BRANCH)
         .replace("{{GitUrl}}", GIT_URL)
-        .replace("{{Year}}", today.getYear())
+        .replace("{{Year}}", today.getYear().toString())
 
     echo htmlBody
 
