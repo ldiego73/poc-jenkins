@@ -9,18 +9,12 @@ pipeline {
     }
 
     stages {
-        stage('Load Plugins') {
-            steps {
-                script {
-                    mail = load("ci/mail.groovy")
-                } 
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 script {
+                    mail = load("ci/mail.groovy")
                     mail.send(MAIL_TO)
+
                     sh 'echo "Installing dependencies"'
                 }
                 
@@ -86,7 +80,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    mail = load("ci/mail.groovy")
                     mail.send(MAIL_TO)
+                    
                     sh 'echo "Deploying"'
                 }
             }
