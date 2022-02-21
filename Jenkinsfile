@@ -5,7 +5,7 @@ pipeline {
     
     environment {
         PROJECT_NAME = 'POC Jenkins'
-        MAIL_TO = 'ldiego@auna.pe,arquitectura.digital@auna.pe'
+        MAIL_TO = 'ldiego@auna.pe,arquitectura.digital@auna.pe,lfdiego7@gmail.com'
     }
 
     stages {
