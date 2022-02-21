@@ -4,7 +4,7 @@ pipeline {
     agent any
     
     environment {
-        WORKSPACE = env.WORKSPACE
+        WORKSPACE = "${env.WORKSPACE}"
         MAIL_TO = 'lfdiego7@gmail.com'
     }
 
