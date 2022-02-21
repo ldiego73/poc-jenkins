@@ -2,87 +2,117 @@ def mail
 
 pipeline {
     agent any
+    
+    environment {
+        WORKSPACE = env.WORKSPACE
+        MAIL_TO = 'lfdiego7@gmail.com'
+    }
 
     stages {
         stage('Load Plugins') {
             steps {
                 script {
-                    mail = load("${env.WORKSPACE}/ci/mail.groovy")
+                    mail = load("${WORKSPACE}/ci/mail.groovy")
                 } 
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                mail.send('lfdiego7@gmail.com')
-                sh 'echo "Installing dependencies"'
+                script {
+                    mail.send(MAIL_TO)
+                    sh 'echo "Installing dependencies"'
+                }
+                
             }
         }
 
         stage('Download Config Files') {
             steps {
-                sh 'echo "Downloading config files"'
+                script {
+                    sh 'echo "Downloading config files"'
+                }
             }
         }
 
         stage('Unit Test') {
             steps {
-                sh 'echo "Running unit tests"'
+                script {
+                    sh 'echo "Running unit tests"'
+                }
             }
         }
 
         stage('Static Analysis Code') {
             steps {
-                sh 'echo "Running static analysis"'
+                script {
+                    sh 'echo "Running static analysis"'
+                }
             }
         }
 
         stage('Quality Gates') {
             steps {
-                sh 'echo "Running quality gates"'
+                script {
+                    sh 'echo "Running quality gates"'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'echo "Building"'
+                script {
+                    sh 'echo "Building"'
+                }
             }
         }
 
         stage('Functional Test') {
             steps {
-                sh 'echo "Running functional tests"'
+                script {
+                    sh 'echo "Running functional tests"'
+                }
             }
         }
 
         stage('Security Test') {
             steps {
-                sh 'echo "Running security tests"'
+                script {
+                    sh 'echo "Running security tests"'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                mail.send('lfdiego7@gmail.com')
-                sh 'echo "Deploying"'
+                script {
+                    mail.send(MAIL_TO)
+                    sh 'echo "Deploying"'
+                }
             }
         }
 
         stage('Post Deploy Test') {
             steps {
-                sh 'echo "Post Deploy Test"'
+                script {
+                    sh 'echo "Post Deploy Test"'
+                }
             }
         }
 
         stage('Post-deploy Security Test') {
             steps {
-                sh 'echo "Post-deploy Security Test"'
+                script {
+                    sh 'echo "Post-deploy Security Test"'
+                }
             }
         }
 
         stage('Post-deploy No-Functional Test') {
             steps {
-                sh 'echo "Post-deploy No-Functional Test"'
+                script {
+                    sh 'echo "Post-deploy No-Functional Test"'
+                }
             }
         }
     }
