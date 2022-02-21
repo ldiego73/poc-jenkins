@@ -11,6 +11,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
+                    sh 'ls'
                     mail = load 'ci/mail.groovy'
                     mail.send(MAIL_TO)
 
