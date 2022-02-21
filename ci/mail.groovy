@@ -17,15 +17,13 @@ def send(String to, String buildStatus) {
         .replace("{{ProjectName}}", PROJECT_NAME)
         .replace("{{JobName}}", JOB_NAME)
         .replace("{{BuildNumber}}", BUILD_NUMBER)
-        .replace("{{BuildUrl}}", "https://github.com/ldiego73/poc-jenkins")
+        .replace("{{BuildUrl}}", BUILD_URL)
         .replace("{{BuildStatus}}", buildStatus)
         .replace("{{BuildStatusColor}}", colorCode)
         .replace("{{GitCommit}}", GIT_COMMIT)
         .replace("{{GitBranch}}", GIT_BRANCH)
         .replace("{{GitUrl}}", GIT_URL)
         .replace("{{Year}}", today.getYear().toString())
-
-    echo htmlBody
 
     emailext body: htmlBody,
         subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $buildStatus!",
