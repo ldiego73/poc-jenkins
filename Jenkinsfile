@@ -12,7 +12,7 @@ pipeline {
         stage('Load Plugins') {
             steps {
                 script {
-                    mail = load("${WORKSPACE}/ci/mail.groovy")
+                    mail = load("ci/mail.groovy")
                 } 
             }
         }
