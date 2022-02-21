@@ -13,9 +13,10 @@ def send(String to, String buildStatus) {
 
     def rawBody = sh(script: "cat ci/build.html", returnStdout: true).trim()
     def htmlBody = rawBody
+        .replace("{{ProjectName}}", PROJECT_NAME)
         .replace("{{JobName}}", JOB_NAME)
         .replace("{{BuildNumber}}", BUILD_NUMBER)
-        .replace("{{BuildUrl}}", BUILD_URL)
+        .replaceAll("{{BuildUrl}}", BUILD_URL)
         .replace("{{BuildStatus}}", buildStatus)
         .replace("{{BuildStatusColor}}", colorCode)
         .replace("{{GitCommit}}", GIT_COMMIT)
