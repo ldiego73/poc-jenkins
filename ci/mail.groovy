@@ -1,6 +1,6 @@
-def send(String to) {
+def send(String to, String status) {
     emailext body: 'Test Message',
-        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $BUILD_STATUS!",
+        subject: "$PROJECT_NAME - Build #$BUILD_NUMBER - $status!",
         to: to;
 }
 

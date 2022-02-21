@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     mail = load 'ci/mail.groovy'
-                    mail.send(MAIL_TO)
+                    mail.send(MAIL_TO, 'Running')
 
                     sh 'echo "Installing dependencies"'
                 }
@@ -81,7 +81,7 @@ pipeline {
             steps {
                 script {
                     mail = load 'ci/mail.groovy'
-                    mail.send(MAIL_TO)
+                    mail.send(MAIL_TO, 'Completed')
 
                     sh 'echo "Deploying"'
                 }
